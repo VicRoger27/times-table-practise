@@ -19,7 +19,11 @@ while (true) {
     n = "j"
     for (let r = 0; r < 4; r++) {
         pins.digitalWritePin(pin_row[i], 1)
+        I2C_LCD1602.ShowString("r: " + ("" + r), 0, 1)
+        pause(200)
         for (let c = 0; c < 4; c++) {
+            I2C_LCD1602.ShowString("c: " + ("" + c) + "  " + ("" + pins.digitalReadPin(pin_row[c])), 4, 1)
+            pause(200)
             if (pins.digitalReadPin(pin_col[c]) == 1) {
                 n = "" + keypad[r][c]
                 break

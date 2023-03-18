@@ -19,7 +19,11 @@ while True:
     n = "j"
     for r in range(4):
         pins.digital_write_pin(pin_row[i], 1)
+        I2C_LCD1602.show_string("r: " + str(r), 0, 1)
+        pause(200)
         for c in range(4):
+            I2C_LCD1602.show_string("c: " + str(c) + "  " + str(pins.digital_read_pin(pin_row[c])), 4, 1)
+            pause(200)
             if pins.digital_read_pin(pin_col[c]) == 1:
                 n = str(keypad[r][c])
                 break
